@@ -52,9 +52,8 @@ class DBManager:
         ''' Returns all stored commands in the database. '''
         try:
             curs.execute('SELECT * FROM commands')
-            conn.execute()
-            return curs.fetch()
+            conn.commit()
+            return curs.fetchall()
         except:
             print("No results were found.")
-
 

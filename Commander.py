@@ -23,9 +23,10 @@ def main():
     elif args.delete:
         print connector.del_record_by_id(args.delete)
     elif args.add:
-        print connector.add_record(args.add)
+        connector.add_record(args.add)
     else:
         parser.print_help()
+
 main()
 
 
