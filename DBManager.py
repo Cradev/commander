@@ -59,5 +59,5 @@ class DBManager:
 
     def update_record(self, data):
         ''' Update a record.'''
-        curs.execute("UPDATE commands SET title=?, command=? WHERE id=?", data)
+        curs.execute("UPDATE commands SET title=?, command=? WHERE id=?", (data))
         conn.commit()

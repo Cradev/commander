@@ -26,11 +26,12 @@ def main():
 
     if args.search:
         if args.search == "all":
-            print connector.show_all_records()
+            for i in connector.show_all_records():
+                print("Number: " + str(i[0]) + "\nTitle: " + i[1] + "\nCommand: " + i[2])
         else:
-            print connector.show_record_by_id(args.search)
+           print connector.show_record_by_id(args.search)
     elif args.delete:
-        print connector.del_record_by_id(args.delete)
+        connector.del_record_by_id(args.delete)
     elif args.add:
         connector.add_record(args.add)
     elif args.update:
