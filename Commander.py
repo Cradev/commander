@@ -4,15 +4,10 @@
 
 from DBManager import DBManager
 import argparse
+import os
 
-class Commander:
-
-    def __init__(self):
-        pass
-
-    def copy_to_clipboard():
-        pass
-
+def copy_to_clipboard(data):
+        os.system("echo '%s\c' | pbcopy" % data)
 
 def main():
     parser = argparse.ArgumentParser(description='Process arguments for Commander')
@@ -29,7 +24,10 @@ def main():
             for i in connector.show_all_records():
                 print("Number: " + str(i[0]) + "\nTitle: " + i[1] + "\nCommand: " + i[2])
         else:
-           print connector.show_record_by_id(args.search)
+            command_to_copy = connector.show_record_by_id(args.search)[2]
+            copy_to_clipboard(command_to_copy)
+            print connector.show_record_by_id(args.search)
+
     elif args.delete:
         connector.del_record_by_id(args.delete)
     elif args.add:
